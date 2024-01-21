@@ -1,9 +1,14 @@
 import Header from "@/components/layaout/Header";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { http } from "@/utils";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    http.get('products').then((response) =>{
+      console.log(response?.data)
+    })
+  }, [])
+  
   return (
     <main>
       <Header/>
